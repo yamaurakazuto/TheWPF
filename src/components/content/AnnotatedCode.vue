@@ -266,9 +266,9 @@ function setLineEl(el: unknown, i: number) {
   display: none;
 }
 
-@container (min-width: 760px) {
+@container (min-width: 740px) {
   .anno__body {
-    grid-template-columns: minmax(0, 1fr) 300px;
+    grid-template-columns: minmax(0, 1fr) 290px;
   }
   .anno__inline {
     display: none;

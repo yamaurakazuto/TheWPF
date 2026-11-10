@@ -139,7 +139,7 @@ const tocOpen = ref(false)
 }
 .ch {
   padding: var(--sp-6) var(--sp-5) var(--sp-8);
-  max-width: calc(var(--content-w) + var(--toc-w) + 64px + 48px);
+  max-width: calc(var(--content-w) + var(--toc-w) + 40px + 48px);
   margin: 0 auto;
 }
 .ch__hero {
@@ -196,7 +196,7 @@ const tocOpen = ref(false)
 .ch__layout {
   display: grid;
   grid-template-columns: minmax(0, var(--content-w));
-  gap: 64px;
+  gap: 40px;
 }
 .ch__body {
   display: grid;
