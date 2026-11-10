@@ -1,0 +1,319 @@
+/*
+ * 簡易 XAML プレビューの見た目。WPF 既定テーマ（Aero2）の雰囲気に寄せてある。
+ * 実物の WPF はサイトのテーマに関係なく白背景なので、ここだけ常にライト配色で固定する。
+ */
+.xp-root {
+  --xp-ink: #000;
+  color: var(--xp-ink);
+  font-family: 'Segoe UI', 'Yu Gothic UI', 'Meiryo UI', sans-serif;
+  font-size: 12px;
+  line-height: 1.35;
+  max-width: 100%;
+  color-scheme: light;
+}
+.xp-root *,
+.xp-root *::before,
+.xp-root *::after {
+  box-sizing: border-box;
+}
+.xp-root--bare {
+  background: #fff;
+  border: 1px solid #c8c8d0;
+  min-height: 80px;
+}
+
+/* 1 セルの grid。単一コンテンツを Stretch / Center などで置くための入れ物 */
+.xp-cell {
+  display: grid;
+  grid-template: minmax(0, 1fr) / minmax(0, 1fr);
+  min-width: 0;
+}
+
+.xp-window {
+  display: flex;
+  flex-direction: column;
+  max-width: 100%;
+  border: 1px solid #7a7a86;
+  border-radius: 8px 8px 0 0;
+  background: #fff;
+  box-shadow: 0 8px 24px rgb(0 0 0 / 0.22);
+  overflow: hidden;
+}
+.xp-window__bar {
+  flex: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 30px;
+  padding: 0 10px;
+  background: #f3f3f3;
+  border-bottom: 1px solid #d9d9d9;
+  font-size: 12px;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.xp-window__btns {
+  color: #555;
+  letter-spacing: 0.3em;
+}
+.xp-window__client {
+  flex: 1 1 auto;
+  background: #fff;
+  min-height: 60px;
+  overflow: auto;
+}
+
+.xp-stack {
+  display: flex;
+  min-width: 0;
+}
+.xp-stack--v {
+  flex-direction: column;
+}
+.xp-stack--h {
+  flex-direction: row;
+}
+.xp-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  align-items: flex-start;
+}
+.xp-grid {
+  display: grid;
+  min-width: 0;
+  min-height: 0;
+}
+.xp-grid--lines {
+  background-image:
+    linear-gradient(to right, rgb(0 0 255 / 0.25) 1px, transparent 1px),
+    linear-gradient(to bottom, rgb(0 0 255 / 0.25) 1px, transparent 1px);
+}
+.xp-dock {
+  display: flex;
+  min-width: 0;
+  min-height: 0;
+}
+.xp-dock__rest {
+  flex: 1 1 auto;
+}
+.xp-canvas {
+  position: relative;
+  min-height: 40px;
+}
+.xp-scroll {
+  overflow: auto;
+}
+
+.xp-text {
+  white-space: nowrap;
+  min-width: 0;
+}
+.xp-label {
+  padding: 5px;
+}
+.xp-binding {
+  font-family: Consolas, monospace;
+  font-size: 0.92em;
+  color: #7a3db8;
+  background: #f3ecfb;
+  border-radius: 3px;
+  padding: 0 3px;
+}
+
+.xp-button {
+  font: inherit;
+  color: inherit;
+  background: #dddddd;
+  border: 1px solid #707070;
+  padding: 1px 6px;
+  justify-items: center;
+  align-items: center;
+  text-align: center;
+  cursor: default;
+  min-height: 20px;
+}
+/*
+ * 既定の Button テンプレート（Aero2）は、ホバー / 押下時にテンプレート内のトリガーで
+ * 内側の Border の背景と枠線を直接書き換える。そのため Style やローカル値で Background を
+ * 指定していても、ホバー中は水色になる（第 3 章「テンプレート」で扱う有名な挙動）。
+ * !important はその「テンプレートトリガーが勝つ」動きを再現するためのもの。
+ */
+.xp-button:hover {
+  background: #bee6fd !important;
+  border-color: #3c7fb1 !important;
+}
+.xp-button:active {
+  background: #c4e5f6 !important;
+  border-color: #2c628b !important;
+}
+
+.xp-textbox {
+  font: inherit;
+  color: inherit;
+  background: #fff;
+  border: 1px solid #abadb3;
+  padding: 2px 3px;
+  min-width: 0;
+  min-height: 20px;
+  width: 100%;
+}
+.xp-textbox:focus {
+  border-color: #569de5;
+  outline: none;
+}
+.xp-textbox::placeholder {
+  font-family: Consolas, monospace;
+  color: #7a3db8;
+  opacity: 0.85;
+}
+.xp-check {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+.xp-check input {
+  margin: 0;
+}
+.xp-combo {
+  font: inherit;
+  color: inherit;
+  min-height: 22px;
+  background: #e5e5e5;
+  border: 1px solid #acacac;
+}
+.xp-listbox {
+  background: #fff;
+  border: 1px solid #abadb3;
+  overflow: auto;
+}
+.xp-listbox__item {
+  padding: 2px 5px;
+}
+.xp-listbox__item:hover {
+  background: #e5f3fb;
+}
+.xp-listbox__item.is-selected {
+  background: #cbe8f6;
+  outline: 1px solid #26a0da;
+  outline-offset: -1px;
+}
+.xp-slider {
+  min-width: 60px;
+  accent-color: #007acc;
+}
+.xp-progress {
+  height: 16px;
+  min-width: 40px;
+  background: #e6e6e6;
+  border: 1px solid #bcbcbc;
+}
+.xp-progress > div {
+  height: 100%;
+  background: #06b025;
+}
+.xp-shape {
+  min-width: 1px;
+  min-height: 1px;
+}
+.xp-separator {
+  height: 1px;
+  margin: 2px 0;
+  background: #a0a0a0;
+}
+.xp-image {
+  display: grid;
+  place-items: center;
+  min-width: 48px;
+  min-height: 32px;
+  padding: 4px;
+  background: repeating-linear-gradient(45deg, #f1f1f5, #f1f1f5 6px, #e7e7ee 6px, #e7e7ee 12px);
+  color: #555;
+  font-size: 11px;
+  overflow: hidden;
+}
+.xp-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  background: #f0f0f0;
+}
+.xp-bar__item {
+  padding: 2px 8px;
+}
+.xp-menu .xp-bar__item:hover {
+  background: #d8eaf9;
+}
+.xp-statusbar {
+  border-top: 1px solid #d0d0d0;
+}
+.xp-groupbox {
+  margin: 0;
+  padding: 6px;
+  border: 1px solid #d5dfe5;
+  border-radius: 3px;
+  min-width: 0;
+}
+.xp-expander summary {
+  cursor: default;
+  padding: 2px 0;
+}
+.xp-tabs {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+.xp-tabs__heads {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0;
+  margin-bottom: -1px;
+  padding-left: 2px;
+}
+.xp-tabs__head {
+  font: inherit;
+  color: inherit;
+  padding: 2px 8px;
+  background: #efefef;
+  border: 1px solid #acacac;
+  border-bottom: 0;
+  margin-right: -1px;
+}
+.xp-tabs__head.is-selected {
+  background: #fff;
+  padding-top: 4px;
+  margin-top: -2px;
+}
+.xp-tabs__body {
+  flex: 1 1 auto;
+  border: 1px solid #acacac;
+  background: #fff;
+  padding: 2px;
+}
+.xp-unknown {
+  border: 1px dashed #b58a00;
+  background: #fffbea;
+  padding: 4px;
+  min-height: 24px;
+}
+.xp-unknown__tag {
+  font-family: Consolas, monospace;
+  font-size: 11px;
+  color: #8a6a00;
+}
+.xp-disabled {
+  opacity: 0.45;
+  pointer-events: none;
+}
+.xp-note {
+  margin: 0;
+  padding: 16px;
+  color: #555;
+  font-size: 13px;
+}
+
+/* ソースとの対応を示すハイライト */
+.xp-hl {
+  outline: 2px solid #e5484d !important;
+  outline-offset: 1px;
+}
