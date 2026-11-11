@@ -1,0 +1,124 @@
+/*
+ * デザイントークン。色・余白・角丸・影・書体はすべてここから参照する。
+ * 図（inline SVG）も同じトークンを使うので、テーマ切り替えは data-theme だけで完結する。
+ */
+:root {
+  /* 書体：外部フォントは読み込まない */
+  --font-sans: 'BIZ UDPGothic', 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', 'Yu Gothic UI', 'Meiryo',
+    system-ui, sans-serif;
+  --font-mono: 'Cascadia Code', 'Cascadia Mono', Consolas, 'SFMono-Regular', Menlo, 'BIZ UDGothic', monospace;
+
+  /* スケール */
+  --fs-xs: 0.75rem;
+  --fs-sm: 0.8125rem;
+  --fs-md: 1rem;
+  --fs-lg: 1.125rem;
+  --fs-xl: 1.375rem;
+  --fs-2xl: 1.75rem;
+  --fs-3xl: clamp(1.9rem, 1.2rem + 2.6vw, 2.9rem);
+
+  --sp-1: 4px;
+  --sp-2: 8px;
+  --sp-3: 12px;
+  --sp-4: 16px;
+  --sp-5: 24px;
+  --sp-6: 32px;
+  --sp-7: 48px;
+  --sp-8: 72px;
+
+  --radius-s: 6px;
+  --radius-m: 10px;
+  --radius-l: 16px;
+
+  --header-h: 56px;
+  --sidebar-w: 272px;
+  --toc-w: 208px;
+  --content-w: 800px;
+
+  --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+
+  /* ライトテーマ */
+  --bg: #f8f8fb;
+  --bg-raised: #ffffff;
+  --bg-sunken: #efeff5;
+  --bg-code: #f4f4f9;
+  --line: #dcdce6;
+  --line-strong: #b9b9c9;
+  --ink: #17171f;
+  --ink-2: #474757;
+  --ink-3: #6a6a7c;
+  --accent: #5235c9;
+  --accent-ink: #ffffff;
+  --accent-soft: #ebe7fb;
+  --accent-line: #b9acf0;
+  --focus: #1f6feb;
+
+  /* 意味を持つ色（図・コールアウト共通） */
+  --c-ui: #5235c9; /* UI スレッド / 論理ツリー */
+  --c-ui-soft: #ebe7fb;
+  --c-render: #0a7f96; /* 描画スレッド / ビジュアルツリー */
+  --c-render-soft: #dcf2f6;
+  --c-data: #1b7f47; /* データ / 成功 */
+  --c-data-soft: #def3e6;
+  --c-warn: #a15c00; /* 注意 */
+  --c-warn-soft: #fbeed6;
+  --c-danger: #c02a55; /* 危険 / 失敗 */
+  --c-danger-soft: #fbe2ea;
+  --c-mute: #7b7b8f;
+  --c-mute-soft: #e9e9f0;
+
+  /* エディターの構文色 */
+  --syn-keyword: #cf222e;
+  --syn-string: #0a3069;
+  --syn-comment: #62697a;
+  --syn-type: #116329;
+  --syn-attr: #0550ae;
+  --syn-number: #8250df;
+
+  --shadow-1: 0 1px 2px rgb(20 20 40 / 0.06), 0 2px 8px rgb(20 20 40 / 0.05);
+  --shadow-2: 0 4px 14px rgb(20 20 40 / 0.1), 0 12px 32px rgb(20 20 40 / 0.08);
+
+  color-scheme: light;
+}
+
+:root[data-theme='dark'] {
+  --bg: #101016;
+  --bg-raised: #181820;
+  --bg-sunken: #0b0b10;
+  --bg-code: #14141c;
+  --line: #2b2b3a;
+  --line-strong: #454558;
+  --ink: #ececf4;
+  --ink-2: #c2c2d2;
+  --ink-3: #9a9aae;
+  --accent: #a797ff;
+  --accent-ink: #14102e;
+  --accent-soft: #272148;
+  --accent-line: #51459a;
+  --focus: #79b8ff;
+
+  --c-ui: #a797ff;
+  --c-ui-soft: #272148;
+  --c-render: #4fc8de;
+  --c-render-soft: #0f3039;
+  --c-data: #5fd08a;
+  --c-data-soft: #12301f;
+  --c-warn: #f0b35a;
+  --c-warn-soft: #3a2a0e;
+  --c-danger: #ff7a9c;
+  --c-danger-soft: #3d1522;
+  --c-mute: #8d8da3;
+  --c-mute-soft: #22222e;
+
+  --syn-keyword: #ff7b72;
+  --syn-string: #a5d6ff;
+  --syn-comment: #8b949e;
+  --syn-type: #7ee787;
+  --syn-attr: #79c0ff;
+  --syn-number: #d2a8ff;
+
+  --shadow-1: 0 1px 2px rgb(0 0 0 / 0.4), 0 2px 8px rgb(0 0 0 / 0.3);
+  --shadow-2: 0 4px 14px rgb(0 0 0 / 0.5), 0 12px 32px rgb(0 0 0 / 0.4);
+
+  color-scheme: dark;
+}

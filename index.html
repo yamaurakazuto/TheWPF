@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="theWPF — WPF の歴史・仕組み・開発の土台・実践ノウハウ・技術選定を、図とインタラクティブなデモで学べる学習サイト。" />
+    <meta name="color-scheme" content="light dark" />
+    <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
+    <title>theWPF — 図とデモで学ぶ WPF</title>
+    <script>
+      // 初回描画前にテーマを確定させ、ちらつきを防ぐ
+      (function () {
+        try {
+          var saved = localStorage.getItem('thewpf:theme');
+          var dark = saved ? saved === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
+          document.documentElement.dataset.theme = dark ? 'dark' : 'light';
+        } catch (e) {
+          document.documentElement.dataset.theme = 'light';
+        }
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
